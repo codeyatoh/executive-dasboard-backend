@@ -1,0 +1,67 @@
+{
+  "name": "executive-dashboard-backend",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "",
+  "private": true,
+  "keywords": [
+    "feathers"
+  ],
+  "author": {},
+  "contributors": [],
+  "bugs": {},
+  "engines": {
+    "node": ">= 22.16.0"
+  },
+  "feathers": {
+    "language": "js",
+    "packager": "yarn",
+    "database": "postgresql",
+    "framework": "express",
+    "transports": [
+      "rest",
+      "websockets"
+    ],
+    "schema": "json"
+  },
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "files": [
+    "lib/client.js",
+    "lib/**/*.d.ts",
+    "lib/**/*.shared.js"
+  ],
+  "main": "src/client",
+  "type": "module",
+  "scripts": {
+    "start": "node src",
+    "dev": "nodemon src/",
+    "prettier": "npx prettier \"**/*.js\" --write",
+    "mocha": "cross-env NODE_ENV=test mocha test/ --recursive --exit",
+    "test": "cross-env NODE_ENV=test npm run migrate && npm run mocha",
+    "test:db": "cross-env NODE_ENV=test mocha test/database.test.js --exit",
+    "bundle:client": "npm pack --pack-destination ./public",
+    "migrate": "knex migrate:latest",
+    "migrate:make": "knex migrate:make -x mjs"
+  },
+  "devDependencies": {
+    "axios": "^1.10.0",
+    "cross-env": "^7.0.3",
+    "mocha": "^11.7.1"
+  },
+  "dependencies": {
+    "@feathersjs/authentication-client": "^5.0.34",
+    "@feathersjs/configuration": "^5.0.34",
+    "@feathersjs/express": "^5.0.34",
+    "@feathersjs/feathers": "^5.0.34",
+    "@feathersjs/rest-client": "^5.0.34",
+    "@feathersjs/schema": "^5.0.34",
+    "@feathersjs/socketio": "^5.0.34",
+    "@feathersjs/transport-commons": "^5.0.34",
+    "knex": "^3.1.0",
+    "pg": "^8.16.3",
+    "winston": "^3.17.0"
+  }
+}

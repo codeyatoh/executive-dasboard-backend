@@ -1,0 +1,14 @@
+{
+  "port": {
+    "__name": "PORT",
+    "__format": "number"
+  },
+  "host": "HOSTNAME",
+  "authentication": {
+    "secret": "FEATHERS_SECRET"
+  },
+  "postgresql": {
+    "__name": "DATABASE_URL",
+    "__format": "string"
+  }
+}
