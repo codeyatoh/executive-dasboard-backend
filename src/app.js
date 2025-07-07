@@ -15,14 +15,18 @@ import { configurationValidator } from './configuration.js'
 import { logger } from './logger.js'
 import { logError } from './hooks/log-error.js'
 import { postgresql } from './postgresql.js'
-/*import { services } from './services/index.js'*/
+import { services } from './services/index.js'
 import { channels } from './channels.js'
 
 const app = express(feathers())
 
 // Load app configuration
 app.configure(configuration(configurationValidator))
-app.use(cors())
+// Enable CORS for frontend (adjust origin as needed)
+app.use(cors({
+  origin: ['http://localhost:5173'], // or your frontend's URL
+  credentials: true
+}))
 app.use(json())
 app.use(urlencoded({ extended: true }))
 // Host the public folder
@@ -38,8 +42,7 @@ app.configure(
   })
 )
 app.configure(postgresql)
-
-/*app.configure(services)*/
+app.configure(services)
 app.configure(channels)
 
 // Configure a middleware for 404s and the error handler
@@ -62,5 +65,3 @@ app.hooks({
 })
 
 export { app }
-  // Service registration placeholder
-  export const services = app => {};
