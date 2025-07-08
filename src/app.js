@@ -18,14 +18,18 @@ import { postgresql } from './postgresql.js'
 import { services } from './services/index.js'
 import { channels } from './channels.js'
 
+
+// (Removed: any direct Knex initialization or db code. Only Feathers and its services handle DB access.)
+
 const app = express(feathers())
 
 // Load app configuration
 app.configure(configuration(configurationValidator))
 // Enable CORS for frontend (adjust origin as needed)
 app.use(cors({
-  origin: ['http://localhost:5173'], // or your frontend's URL
-  credentials: true
+  origin: '*', // allow all origins for development
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }))
 app.use(json())
 app.use(urlencoded({ extended: true }))
