@@ -11,6 +11,6 @@
   },
   "postgresql": {
     "client": "pg",
-    "connection": "postgres://postgres:Mycaren014324!@localhost:5432/executive_dashboard_db"
+    "connection": "postgres://postgres:root@localhost:5432/Executive"
   }
 }

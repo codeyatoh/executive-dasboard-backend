@@ -7,7 +7,7 @@ export async function up(knex) {
       table.string('email');
       table.string('gender');
       table.boolean('status');
-      table.integer('hire_date');
+      table.timestamp('hire_date').comment('Date and time the crew was hired');
     });
   
     // 2. orders table (may foreign key sa crew)
